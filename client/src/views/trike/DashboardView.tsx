@@ -9,7 +9,7 @@ import styles from './DashboardView.module.css';
  */
 export default function DashboardView(): JSX.Element {
   return (
-    <Row className="styles.contentContainer">
+    <Row className={styles.contentContainer}>
       <label> Help Me test this</label>
     </Row>
   );
