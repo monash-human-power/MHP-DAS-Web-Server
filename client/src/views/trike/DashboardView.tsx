@@ -1,5 +1,9 @@
 import React from 'react';
+
+import TrikeLocationMap from 'components/trike/dashboard/TrikeLocationMap';
+
 import { Col, Row } from 'react-bootstrap';
+
 import styles from './DashboardView.module.css';
 
 /**
@@ -10,7 +14,11 @@ import styles from './DashboardView.module.css';
 export default function DashboardView(): JSX.Element {
   return (
     <Row className={styles.contentContainer}>
-      <label> Help Me test this</label>
+      <Col className={styles.content}>
+        <div className={styles.bigGraph}>
+          <TrikeLocationMap />
+        </div>
+      </Col>
     </Row>
   );
 }
