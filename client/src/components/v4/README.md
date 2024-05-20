@@ -1,6 +1,6 @@
-# V3 Components
+# V4 Components
 
-This folder holds components that are needed only for V3 views.
+This folder holds components that are needed only for V4 views.
 
 ## Structure
 
@@ -13,10 +13,10 @@ All components that relate to a _specific view_ should be stored in a subfolder.
 ./dashboard/DashboardDropDown.module.css
 ```
 
-All components that are shared between V3 views can stay in this folder.
+All components that are shared between V4 views can stay in this folder.
 
 ```
-# A general V3 component should be stored in the base of this folder
+# A general V4 component should be stored in the base of this folder
 ./BigButton.tsx
 ./BigButton.stories.tsx
 ./BigButton.module.css

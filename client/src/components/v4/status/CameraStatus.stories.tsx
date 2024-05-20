@@ -4,7 +4,7 @@ import CameraStatus, { CameraStatusProps } from './CameraStatus';
 
 export default {
   component: CameraStatus,
-  title: 'components/v3/status/CameraStatus',
+  title: 'components/v4/status/CameraStatus',
 };
 
 const Template = addArgs<CameraStatusProps>((props) => (

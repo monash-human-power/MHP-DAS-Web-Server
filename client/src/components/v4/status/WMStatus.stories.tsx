@@ -5,7 +5,7 @@ import WMStatus, { WMStatusProps } from './WMStatus';
 
 export default {
   component: WMStatus,
-  title: 'components/v3/status/WirelessModuleStatus',
+  title: 'components/v4/status/WirelessModuleStatus',
 };
 
 const Template = addArgs<WMStatusProps>((props) => <WMStatus {...props} />);

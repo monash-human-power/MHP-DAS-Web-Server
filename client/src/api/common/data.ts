@@ -208,3 +208,17 @@ export function startV3() {
 export function stopV3() {
   emit('stop-V3');
 }
+
+/**
+ * Start V4
+ */
+export function startV4() {
+  emit('start-V4');
+}
+
+/**
+ * Stop V4
+ */
+export function stopV4() {
+  emit('stop-V4');
+}

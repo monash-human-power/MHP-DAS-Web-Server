@@ -5,7 +5,7 @@ import AnemometerStatus, { WMStatusProps } from './AnemometerStatus';
 
 export default {
   component: AnemometerStatus,
-  title: 'components/v3/status/AnemometerStatus',
+  title: 'components/v4/status/AnemometerStatus',
 };
 
 const Template = addArgs<WMStatusProps>((props) => (

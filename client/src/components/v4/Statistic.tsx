@@ -1,4 +1,4 @@
-import styles from 'components/v3/Statistic.module.css';
+import styles from 'components/v4/Statistic.module.css';
 import React from 'react';
 
 export interface StatisticProps {

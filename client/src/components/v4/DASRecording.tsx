@@ -1,6 +1,6 @@
 import {
-  startV3,
-  stopV3,
+  startV4,
+  stopV4,
   useModuleDataCallback,
   useModuleStartCallback,
   useModuleStopCallback,
@@ -41,14 +41,14 @@ export default function DASRecording(): JSX.Element {
   function startRecording() {
     toast.success('DAS & BOOST recording is started!');
     setLoggingEnabled(true);
-    startV3();
+    startV4();
   }
 
   /** Stop DAS recording and BOOST computations */
   function stopRecording() {
     toast.success('DAS & BOOST recording is stopped!');
     setLoggingEnabled(false);
-    stopV3();
+    stopV4();
   }
 
   return (

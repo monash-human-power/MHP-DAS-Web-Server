@@ -4,7 +4,7 @@ import { Card, Row } from 'react-bootstrap';
 
 import CameraStatus, {
   CameraStatusProps,
-} from 'components/v3/status/CameraStatus';
+} from 'components/v4/status/CameraStatus';
 import {
   useCameraBattery,
   useCameraStatus,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Row } from 'react-bootstrap';
-import AnemometerStatus from 'components/v3/status/AnemometerStatus';
+import AnemometerStatus from 'components/v4/status/AnemometerStatus';
 import { useModuleStatus } from 'api/common/data';
 
 /**

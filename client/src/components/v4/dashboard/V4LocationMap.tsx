@@ -7,8 +7,8 @@ import LocationMap, {
 } from 'components/common/charts/LocationMap';
 import { GPSRT } from 'types/data';
 
-export const V3MapKey = 'v3-dashboard-location-map-chart-data';
-export const V3MapZoomKey = 'v3-dashboard-location-map-zoom';
+export const V4MapKey = 'v4-dashboard-location-map-chart-data';
+export const V4MapZoomKey = 'v4-dashboard-location-map-zoom';
 
 /**
  * Checks if a given location is valid
@@ -34,15 +34,15 @@ function isValidLocation(location: LocationTimeSeriesPoint): boolean {
  * @property props Props
  * @returns Component
  */
-export default function V3LocationMap(): JSX.Element {
-  const storedData = sessionStorage.getItem(V3MapKey);
+export default function V4LocationMap(): JSX.Element {
+  const storedData = sessionStorage.getItem(V4MapKey);
 
   const [locationHistory, setStateLocationHistory] = useState<
     LocationTimeSeriesPoint[]
   >(storedData ? JSON.parse(storedData) : []);
 
   const setLocationHistory = (data: LocationTimeSeriesPoint[]) => {
-    sessionStorage.setItem(V3MapKey, JSON.stringify(data));
+    sessionStorage.setItem(V4MapKey, JSON.stringify(data));
     setStateLocationHistory(data);
   };
 

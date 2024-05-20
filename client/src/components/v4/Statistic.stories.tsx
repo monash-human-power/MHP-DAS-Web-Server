@@ -1,9 +1,9 @@
 import React from 'react';
 import { addArgs, createStory } from 'utils/stories';
-import Statistic, { StatisticProps } from 'components/v3/Statistic';
+import Statistic, { StatisticProps } from 'components/v4/Statistic';
 
 export default {
-  title: 'components/v3/Statistic',
+  title: 'components/v4/Statistic',
   component: Statistic,
 };
 

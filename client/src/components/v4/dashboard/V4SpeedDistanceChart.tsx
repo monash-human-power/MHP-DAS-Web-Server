@@ -6,15 +6,15 @@ import SpeedDistanceChart from 'components/common/charts/SpeedDistanceChart';
 import { ChartPoint } from 'types/chart';
 import { AntDistanceRT, AntSpeedRT } from 'types/data';
 
-export const V3SDChartKey = 'v3-dashboard-speed-distance-chart-data';
+export const V4SDChartKey = 'v4-dashboard-speed-distance-chart-data';
 
 /**
- * Passes V3 data to the speed distance chart component
+ * Passes V4 data to the speed distance chart component
  *
  * @returns Component
  */
-export function V3SpeedDistanceChart() {
-  const storedData = sessionStorage.getItem(V3SDChartKey);
+export function V4SpeedDistanceChart() {
+  const storedData = sessionStorage.getItem(V4SDChartKey);
 
   // Used to store the data points
   const [data, setStateData] = useState<ChartPoint[]>(
@@ -24,7 +24,7 @@ export function V3SpeedDistanceChart() {
 
   // Store data for session
   const setData = (newData: ChartPoint[]) => {
-    sessionStorage.setItem(V3SDChartKey, JSON.stringify(newData));
+    sessionStorage.setItem(V4SDChartKey, JSON.stringify(newData));
     setStateData(newData);
   };
 

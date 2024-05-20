@@ -1,9 +1,9 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import ContentPage from 'components/common/ContentPage';
-import CameraStatusContainer from 'components/v3/status/CameraStatusContainer';
-import WMStatusContainer from 'components/v3/status/WMStatusContainer';
-import AnemometerStatusContainer from 'components/v3/status/AnemometerStatusContainer';
+import CameraStatusContainer from 'components/v4/status/CameraStatusContainer';
+import WMStatusContainer from 'components/v4/status/WMStatusContainer';
+import AnemometerStatusContainer from 'components/v4/status/AnemometerStatusContainer';
 
 /**
  * Status View component

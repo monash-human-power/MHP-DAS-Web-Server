@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Row } from 'react-bootstrap';
 
-import WMStatus from 'components/v3/status/WMStatus';
+import WMStatus from 'components/v4/status/WMStatus';
 import { useModuleStatus } from 'api/common/data';
 
 /**
