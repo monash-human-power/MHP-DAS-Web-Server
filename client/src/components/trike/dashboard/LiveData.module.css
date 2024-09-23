@@ -1,6 +1,5 @@
 .value {
-    font-size: 32px;
-    line-height: 34px;
+    font-size: 14px;
     color: black;
     text-align: right;
   }
@@ -14,7 +13,6 @@
   
   .desc {
     font-size: 14px;
-    line-height: 18px;
     color: black;
   }
 
@@ -25,5 +23,4 @@
     justify-content: flex-end;
     align-items: flex-end;
     margin: 5px 5px 5px 5px; 
-    
   }

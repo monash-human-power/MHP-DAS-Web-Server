@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './LiveData.module.css';
+import styles from './LiveDataRow.module.css';
 import LiveData from './LiveData';
 
 /*
@@ -22,7 +22,7 @@ export default function LiveDataRow({ data }: LiveDataProps) {
 
 export default function LiveDataRow(): JSX.Element {
   return (
-    <>
+    <div>
       <div>
         <h3 className={styles.title}>CURRENT STINT</h3>
       </div>
@@ -58,6 +58,6 @@ export default function LiveDataRow(): JSX.Element {
           <LiveData value="30" unit="m" desc="Est. Pit Time" />
         </div>
       </div>
-    </>
+    </div>
   );
 }
