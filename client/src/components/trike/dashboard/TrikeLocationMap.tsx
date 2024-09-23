@@ -10,6 +10,10 @@ import { GPSRT } from 'types/data';
 export const TrikeMapKey = 'trike-dashboard-location-map-chart-data';
 export const TrikeZoomKey = 'trike-dashboard-location-map-zoom';
 
+const caseyData: LatLngTuple[] = require('../CaseyLatLngTuple.json');
+
+console.log(caseyData[5]);
+
 /**
  * Checks if a given location is an object consisting of a valid latitude and longitude.
  *
@@ -35,7 +39,9 @@ function isValidLocation(location: LocationTimeSeriesPoint): boolean {
  * @returns Component
  */
 export default function TrikeLocationMap(): JSX.Element {
-  const storedData = sessionStorage.getItem(TrikeMapKey);
+  const storedData: string | null = sessionStorage.getItem(TrikeMapKey);
+
+  console.log('storedData', storedData);
 
   const [locationHistory, setStateLocationHistory] = useState<
     LocationTimeSeriesPoint[]
@@ -57,6 +63,7 @@ export default function TrikeLocationMap(): JSX.Element {
   useEffect(() => {
     if (GPS) {
       const location = { lat: GPS.latitude, long: GPS.longitude };
+
       if (isValidLocation(location))
         setLocationHistory([...locationHistory, location]);
     }
@@ -64,5 +71,6 @@ export default function TrikeLocationMap(): JSX.Element {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [GPS]);
 
+  console.log('locationHistory', locationHistory);
   return <LocationMap series={locationHistory} />;
 }

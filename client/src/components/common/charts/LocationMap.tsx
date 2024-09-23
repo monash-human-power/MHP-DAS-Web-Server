@@ -14,7 +14,8 @@ import LeafletCenterControl from 'components/v2/LeafletCenterControl';
 
 import 'leaflet/dist/leaflet.css';
 
-const MHP_WORKSHOP_LOCATION = [-37.908756, 145.13404];
+// const MHP_WORKSHOP_LOCATION = [-37.908756, 145.13404];
+const CASEY_FIELDS_LOCATION = [-38.12667, 145.31408];
 
 export interface LocationTimeSeriesPoint {
   /** GPS latitude */
@@ -35,12 +36,14 @@ export interface LocationMapProps {
  * @returns Component
  */
 export default function LocationMap({ series }: LocationMapProps): JSX.Element {
-  const bikeHistory = series.map(({ lat, long }) => [lat, long] as LatLngTuple);
+  const bikeHistory: LatLngTuple[] = series.map(
+    ({ lat, long }) => [lat, long] as LatLngTuple,
+  );
 
   const initialLocation = bikeHistory[0];
-  const currentLocation = bikeHistory[series.length - 1];
+  const currentLocation = bikeHistory[bikeHistory.length - 1];
 
-  const center = initialLocation ?? MHP_WORKSHOP_LOCATION;
+  const center = initialLocation ?? CASEY_FIELDS_LOCATION;
 
   return (
     <Map
