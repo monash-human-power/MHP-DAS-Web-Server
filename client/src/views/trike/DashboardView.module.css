@@ -12,28 +12,29 @@
   
   .contentContainer {
     width: 97vw;
-    /* height: 60vh; */
     margin-top: 25px;
     margin-bottom: 25px;
     margin-left: 1.2vw;
   }
   
-  /* .content {
-    height: 85vh;
-  } */
-  
+  .content{
+    min-height: 80vh;
+  }
+
   .line {
-    height: 67px;
+    /* height: 100px; */
     border: 1px solid #cccccc;
   }
   
   .graph {
-    height: 85vh - 170px;
-    min-height: 400px;
+    /* height: 85vh;
+    width: 85h; */
+    min-height: 50vh;
+    /* max-width: 800px; */
   }
   
   .bigGraph {
-    height: 100%;
-    min-height: 400px;
+    min-height: 50vh;
+    height: 50vh;
   }
   
