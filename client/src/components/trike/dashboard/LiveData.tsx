@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './LiveData.module.css';
+import styles from 'components/trike/LiveData.module.css';
 
 export interface LiveDataProps {
   /** Value to be shown */
