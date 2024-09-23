@@ -11,7 +11,7 @@ export const TrikeMapKey = 'trike-dashboard-location-map-chart-data';
 export const TrikeZoomKey = 'trike-dashboard-location-map-zoom';
 
 /**
- * Checks if a given location is valid
+ * Checks if a given location is an object consisting of a valid latitude and longitude.
  *
  * @param location Location to check
  * @returns True if is valid, otherwise False
@@ -34,7 +34,7 @@ function isValidLocation(location: LocationTimeSeriesPoint): boolean {
  * @property props Props
  * @returns Component
  */
-export default function V3LocationMap(): JSX.Element {
+export default function TrikeLocationMap(): JSX.Element {
   const storedData = sessionStorage.getItem(TrikeMapKey);
 
   const [locationHistory, setStateLocationHistory] = useState<
