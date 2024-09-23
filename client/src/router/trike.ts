@@ -2,6 +2,7 @@ import React from 'react';
 import { RouteInfo } from 'types/route';
 import DashboardView from 'views/trike/DashboardView';
 import ChartView from 'views/trike/ChartView';
+
 import BoostView from 'views/common/BoostView';
 import LogsView from 'views/common/LogsView';
 import CameraSystemView from 'views/common/CameraSystemView';
