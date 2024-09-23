@@ -19,9 +19,6 @@ export default function DashboardView(): JSX.Element {
         <div className={styles.bigGraph}>
           <TrikeSpeedDistanceChart />
         </div>
-        <div className={styles.bigGraph}>
-          <TrikeSpeedDistanceChart />
-        </div>
       </Col>
       <Col lg={6} className={styles.content}>
         <div className={styles.bigGraph}>

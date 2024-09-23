@@ -12,15 +12,15 @@
   
   .contentContainer {
     width: 97vw;
-    height: 60vh;
+    /* height: 60vh; */
     margin-top: 25px;
     margin-bottom: 25px;
     margin-left: 1.2vw;
   }
   
-  .content {
+  /* .content {
     height: 85vh;
-  }
+  } */
   
   .line {
     height: 67px;

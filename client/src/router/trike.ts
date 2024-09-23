@@ -5,7 +5,6 @@ import ChartView from 'views/trike/ChartView';
 
 import BoostView from 'views/common/BoostView';
 import LogsView from 'views/common/LogsView';
-import CameraSystemView from 'views/common/CameraSystemView';
 
 const routes: RouteInfo[] = [
   {
@@ -31,12 +30,6 @@ const routes: RouteInfo[] = [
     path: '/trike/boost',
     exact: true,
     component: (BoostView as unknown) as React.Component,
-  },
-  {
-    name: 'Camera System',
-    path: '/trike/camera-system',
-    exact: true,
-    component: (CameraSystemView as unknown) as React.Component,
   },
 ];
 
