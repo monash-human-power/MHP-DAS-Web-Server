@@ -15,6 +15,12 @@ const routes: RouteInfo[] = [
     component: (DashboardView as unknown) as React.Component,
   },
   {
+    name: 'Logs',
+    path: '/trike/logs',
+    exact: true,
+    component: (LogsView as unknown) as React.Component,
+  },
+  {
     name: 'Charts',
     path: '/trike/charts',
     exact: true,
@@ -22,21 +28,15 @@ const routes: RouteInfo[] = [
   },
   {
     name: 'Boost',
-    path: '/v3/boost',
+    path: '/trike/boost',
     exact: true,
     component: (BoostView as unknown) as React.Component,
   },
   {
     name: 'Camera System',
-    path: '/v3/camera-system',
+    path: '/trike/camera-system',
     exact: true,
     component: (CameraSystemView as unknown) as React.Component,
-  },
-  {
-    name: 'Logs',
-    path: '/v3/logs',
-    exact: true,
-    component: (LogsView as unknown) as React.Component,
   },
 ];
 
