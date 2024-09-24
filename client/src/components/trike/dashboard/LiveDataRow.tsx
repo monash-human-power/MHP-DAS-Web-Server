@@ -54,7 +54,9 @@ export default function LiveDataRow(): JSX.Element {
   };
 
   const decLap = () => {
-    setLapNum((prevLapNum) => prevLapNum - 1); // Use prevLapNum for the most up-to-date value
+    if (LapNum !== 0) {
+      setLapNum((prevLapNum) => prevLapNum - 1); // Use prevLapNum for the most up-to-date value
+    }
   };
 
   /* End Button testing */
