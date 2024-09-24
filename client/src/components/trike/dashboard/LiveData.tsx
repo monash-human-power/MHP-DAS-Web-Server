@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from 'components/trike/LiveData.module.css';
+import styles from 'components/trike/dashboard/LiveData.module.css';
 
 export interface LiveDataProps {
   /** Value to be shown */
@@ -23,7 +23,7 @@ export default function LiveData({
 }: LiveDataProps): JSX.Element {
   return (
     <>
-      <span className={styles.desc}></span>
+      <span className={styles.desc}>{desc}</span>
       <div className={styles.top}>
         <span className={styles.value}>{value ?? '-'}</span>
         <span className={styles.unit}>{unit}</span>

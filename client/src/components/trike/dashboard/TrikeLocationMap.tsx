@@ -13,6 +13,9 @@ export const TrikeZoomKey = 'trike-dashboard-location-map-zoom';
 
 const caseyData: LatLngTuple[] = require('../CaseyLatLngTuple.json');
 
+console.log(caseyData[5]);
+console.log(caseyData.slice(1, 50));
+
 /**
  * Checks if a given location is an object consisting of a valid latitude and longitude.
  *
