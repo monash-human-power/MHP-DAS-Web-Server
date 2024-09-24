@@ -1,6 +1,6 @@
 .currentStintContainer {
   display: flex; 
-  justify-content: space-around; 
+  justify-content: space-evenly; 
   align-items: center; 
   margin: 20px 0 20px 0;
   padding: 10px;
@@ -45,9 +45,9 @@
 }
 .pitButton {
   background-color: #ddd; 
-  padding: 10px 20px;
-  margin-left: 20px; 
-  border: 1px solid #aaa;
+  padding: 10px 10px;
+  margin: 0 15px; 
+  border: 1px ;
   border-radius: 100px;
   cursor: pointer;
   font-size: 15px;

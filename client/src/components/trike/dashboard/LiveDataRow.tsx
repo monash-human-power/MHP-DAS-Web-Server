@@ -23,7 +23,7 @@ export default function LiveDataRow({ data }: LiveDataProps) {
 
 // getting power data from json file TESTING PURPOSES
 
-const powerData: LatLngTuple[] = require('../CaseyLatLngTuple.json');
+const powerData: LatLngTuple[] = require('../CaseyPowerData.json');
 
 export default function LiveDataRow(): JSX.Element {
   /* Testing LIVE display using JSON data */
@@ -59,10 +59,17 @@ export default function LiveDataRow(): JSX.Element {
 
   /* End Button testing */
 
+  /* Local Time / Date Testing */
+  const date = new Date();
+  const showTime = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+
+  /* End time testing */
+
   return (
     <div>
       <div>
         <h3 className={styles.title}>CURRENT STINT</h3>
+        <h2 className={styles.title}>Local Time: {showTime}</h2>
       </div>
 
       <div>
@@ -105,10 +112,20 @@ export default function LiveDataRow(): JSX.Element {
         <div className={styles.liveDataItem}>
           <LiveData value="30" unit="m" desc="Est. Pit Time" />
           <div className={styles.buttonContainer}>
-            <button onClick={incLap} className={styles.pitButton} type="button">
+            <button
+              style={{ color: '#73c977' }}
+              onClick={incLap}
+              className={styles.pitButton}
+              type="button"
+            >
               + 1 LAP
             </button>
-            <button onClick={decLap} className={styles.pitButton} type="button">
+            <button
+              style={{ color: '#e02626' }}
+              onClick={decLap}
+              className={styles.pitButton}
+              type="button"
+            >
               - 1 LAP
             </button>
           </div>

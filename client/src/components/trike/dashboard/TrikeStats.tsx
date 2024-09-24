@@ -13,15 +13,15 @@ export default function TrikeStatsRow(): JSX.Element {
 
       <div className={styles.currentStintContainer}>
         <div className={styles.liveDataItem}>
-          <LiveData value="300" unit="km/h" desc="Live Speed:" />
+          <LiveData value="300" unit="km/h" desc="Last Lap Time:" />
         </div>
 
         <div className={styles.liveDataItem}>
-          <LiveData value="300" unit="km/h" desc="Live Speed:" />
+          <LiveData value="300" unit="km/h" desc="Last Lap Avg Speed:" />
         </div>
 
         <div className={styles.liveDataItem}>
-          <LiveData value="300" unit="km/h" desc="Live Speed:" />
+          <LiveData value="300" unit="km/h" desc="Last Lap Avg Watts:" />
         </div>
       </div>
 
@@ -32,15 +32,15 @@ export default function TrikeStatsRow(): JSX.Element {
 
       <div className={styles.currentStintContainer}>
         <div className={styles.liveDataItem}>
-          <LiveData value="300" unit="km/h" desc="Live Speed:" />
+          <LiveData value="300" unit="km/h" desc="Elapsed Time:" />
         </div>
 
         <div className={styles.liveDataItem}>
-          <LiveData value="300" unit="km/h" desc="Live Speed:" />
+          <LiveData value="300" unit="km/h" desc="Avg Spd:" />
         </div>
 
         <div className={styles.liveDataItem}>
-          <LiveData value="300" unit="km/h" desc="Live Speed:" />
+          <LiveData value="300" unit="km/h" desc="Distance Covered:" />
         </div>
       </div>
 
@@ -51,15 +51,19 @@ export default function TrikeStatsRow(): JSX.Element {
 
       <div className={styles.currentStintContainer}>
         <div className={styles.liveDataItem}>
-          <LiveData value="300" unit="km/h" desc="Live Speed:" />
+          <LiveData value="300" unit="km/h" desc="Elapsed Time:" />
         </div>
 
         <div className={styles.liveDataItem}>
-          <LiveData value="300" unit="km/h" desc="Live Speed:" />
+          <LiveData value="300" unit="km/h" desc="Avg Spd:" />
         </div>
 
         <div className={styles.liveDataItem}>
-          <LiveData value="300" unit="km/h" desc="Live Speed:" />
+          <LiveData value="300" unit="km/h" desc="Laps Done:" />
+        </div>
+
+        <div className={styles.liveDataItem}>
+          <LiveData value="300" unit="km/h" desc="Distance Covered:" />
         </div>
       </div>
     </div>
