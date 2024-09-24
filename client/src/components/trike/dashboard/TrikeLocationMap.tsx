@@ -5,6 +5,7 @@ import { useChannel } from 'api/common/socket';
 import LocationMap, {
   LocationTimeSeriesPoint,
 } from 'components/common/charts/LocationMap';
+import { LatLngTuple } from 'leaflet';
 import { GPSRT } from 'types/data';
 
 export const TrikeMapKey = 'trike-dashboard-location-map-chart-data';
@@ -13,6 +14,7 @@ export const TrikeZoomKey = 'trike-dashboard-location-map-zoom';
 const caseyData: LatLngTuple[] = require('../CaseyLatLngTuple.json');
 
 console.log(caseyData[5]);
+console.log(caseyData.slice(1, 50));
 
 /**
  * Checks if a given location is an object consisting of a valid latitude and longitude.
@@ -39,9 +41,9 @@ function isValidLocation(location: LocationTimeSeriesPoint): boolean {
  * @returns Component
  */
 export default function TrikeLocationMap(): JSX.Element {
+  // console.log(JSON.parse())
+  // Retrieves a JSON (formatted as a string) in sessionStorage (stored by MQTT I assume)
   const storedData: string | null = sessionStorage.getItem(TrikeMapKey);
-
-  console.log('storedData', storedData);
 
   const [locationHistory, setStateLocationHistory] = useState<
     LocationTimeSeriesPoint[]
@@ -54,6 +56,7 @@ export default function TrikeLocationMap(): JSX.Element {
 
   // Reset on start
   const reset = () => setLocationHistory([]);
+
   // TODO: need to change this reset topic
   useChannel('wireless_module-3-start', reset);
 
