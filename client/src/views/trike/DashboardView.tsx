@@ -5,7 +5,7 @@ import TrikeLocationMap from 'components/trike/dashboard/TrikeLocationMap';
 import { Container, Col, Row } from 'react-bootstrap';
 
 import styles from './DashboardView.module.css';
-import { TrikeSpeedDistanceChart } from '../../components/trike/charts/TrikeSpeedDistanceChart';
+import { TrikePowerSpeedTimeChart } from '../../components/trike/charts/TrikePowerSpeedTimeChart';
 
 /**
  * Dashboard view component
@@ -25,7 +25,7 @@ export default function DashboardView(): JSX.Element {
         </Col>
         <Col xs={{ span: 12, order: 3 }} lg={{ span: 6, order: 2 }}>
           <div className={styles.graph}>
-            <TrikeSpeedDistanceChart />
+            <TrikePowerSpeedTimeChart />
           </div>
         </Col>
         <Col

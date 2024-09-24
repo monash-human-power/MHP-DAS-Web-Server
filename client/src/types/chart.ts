@@ -11,3 +11,12 @@ export interface ChartProps {
   /** The maximum value achieved */
   max: number;
 }
+
+export interface DualChartProps {
+  /** Data to render */
+  data: ChartPoint[];
+  data2: ChartPoint[];
+  /** The maximum value achieved */
+  max: number;
+  max2: number;
+}

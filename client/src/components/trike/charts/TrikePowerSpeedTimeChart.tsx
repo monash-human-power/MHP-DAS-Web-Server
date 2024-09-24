@@ -2,19 +2,19 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import { Sensor, useSensorData } from 'api/common/data';
 import { useChannel } from 'api/common/socket';
-import SpeedDistanceChart from 'components/common/charts/SpeedDistanceChart';
+import PowerSpeedTimeChart from 'components/common/charts/PowerSpeedTimeChart';
 import { ChartPoint } from 'types/chart';
 import { AntDistanceRT, AntSpeedRT } from 'types/data';
 
-export const TrikeSDChartKey = 'trike-dashboard-speed-distance-chart-data';
+export const TrikePSTChartKey = 'trike-dashboard-power-speed-time-chart-data';
 
 /**
  * Passes trike data to the speed distance chart component
  *
  * @returns Component
  */
-export function TrikeSpeedDistanceChart() {
-  const storedData = sessionStorage.getItem(TrikeSDChartKey);
+export function TrikePowerSpeedTimeChart() {
+  const storedData = sessionStorage.getItem(TrikePSTChartKey);
 
   // Used to store the data points
   const [data, setStateData] = useState<ChartPoint[]>(
@@ -24,7 +24,7 @@ export function TrikeSpeedDistanceChart() {
 
   // Store data for session
   const setData = (newData: ChartPoint[]) => {
-    sessionStorage.setItem(TrikeSDChartKey, JSON.stringify(newData));
+    sessionStorage.setItem(TrikePSTChartKey, JSON.stringify(newData));
     setStateData(newData);
   };
 
@@ -54,10 +54,12 @@ export function TrikeSpeedDistanceChart() {
   }, [speed]);
 
   return (
-    <SpeedDistanceChart
+    <PowerSpeedTimeChart
       // Maximum of data set
-      max={maxSpeed.current}
       data={data}
+      data2={data}
+      max={maxSpeed.current}
+      max2={maxSpeed.current}
     />
   );
 }
