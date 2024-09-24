@@ -28,12 +28,8 @@ def isIncreasing(numbers: list[int]) -> bool:
 caseyTuples = parseCSV("CaseyGPSData.csv", "LATITUDE", "LONGITUDE")
 power1 = parseCSV("CaseyGPSData.csv", "time")
 power2 = parseCSV("CaseyGPSData.csv", "TIME_TOTAL")
-print(power1[0], power1[-1]) 
-print(power2[0], power2[-1])
-# [print(p[0]) for p in power2]
 
 distAndTime = parseCSV("CaseyGPSData.csv", "DISTANCE_m", "TIME_TOTAL")
-
 
 def calculateSpeed(distAndTime: list[tuple]) -> list[float]:
     speeds = []
@@ -43,15 +39,11 @@ def calculateSpeed(distAndTime: list[tuple]) -> list[float]:
         dist2, time2 = distAndTime[i]
 
         time_diff = float(time2) - float(time1)
-
         distance_diff = float(dist2) - float(dist1)
+        speed = distance_diff / time_diff
 
-        if time_diff > 0:
-            speed = distance_diff / time_diff
-        else:
-            speed = 0  # In case of zero time difference
-
-        speeds.append(speed)
+        # Checks for no time difference
+        speeds.append(speed if time_diff > 0 else 0)
 
     return speeds
 
@@ -59,3 +51,12 @@ speeds = calculateSpeed(distAndTime)
 
 writeTuplesToJson("CaseyLatLngTuple.json", caseyTuples)
 writeTuplesToJson("CaseySpeeds.json", speeds)
+
+power3 = [p[0] for p in parseCSV("CaseyGPSData.csv", "POWER")]
+print(power3)
+
+# [print(type(p)) for p in power3[:5]]
+# print(all(p[1] == ',' for p in power3))
+print(power3.count('0.0'))
+print(power3.count(''))
+print(len(power3))

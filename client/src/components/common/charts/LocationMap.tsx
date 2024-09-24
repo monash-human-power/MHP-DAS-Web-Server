@@ -68,8 +68,20 @@ export default function LocationMap({ series }: LocationMapProps): JSX.Element {
           fillOpacity={1}
         />
       ) : null}
-      <Polyline positions={bikeHistory} color="red" weight={1} />{' '}
-      {/* all locations of the trike */}
+
+      {initialLocation ? (
+        <CircleMarker
+          center={initialLocation}
+          radius={7}
+          color="white"
+          weight={2}
+          fillColor="#0BDA51"
+          fillOpacity={1}
+        />
+      ) : null}
+
+      {/* all locations of the bike */}
+      <Polyline positions={bikeHistory} color="red" weight={1} />
       <ScaleControl imperial={false} />
       <AttributionControl prefix={false} />
       <LeafletCenterControl center={center} />

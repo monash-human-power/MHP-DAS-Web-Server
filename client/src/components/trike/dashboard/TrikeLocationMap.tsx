@@ -84,8 +84,6 @@ export default function TrikeLocationMap(): JSX.Element {
     convertToLTSP,
   );
 
-  console.log('testlh', testLocationHistory);
-
   // locationHistory type is <LocationTimeSeriesPoint[]>, NOT <LocationMapProps>
   return <LocationMap series={testLocationHistory} />;
   // return <LocationMap series={locationHistory} />;
