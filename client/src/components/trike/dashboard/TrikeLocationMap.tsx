@@ -41,7 +41,6 @@ function isValidLocation(location: LocationTimeSeriesPoint): boolean {
  * @returns Component
  */
 export default function TrikeLocationMap(): JSX.Element {
-  // console.log(JSON.parse())
   // Retrieves a JSON (formatted as a string) in sessionStorage (stored by MQTT I assume)
   const storedData: string | null = sessionStorage.getItem(TrikeMapKey);
 
@@ -49,6 +48,7 @@ export default function TrikeLocationMap(): JSX.Element {
     LocationTimeSeriesPoint[]
   >(storedData ? JSON.parse(storedData) : []);
 
+  // Updates the sessionStorage with the new locationHistory
   const setLocationHistory = (data: LocationTimeSeriesPoint[]) => {
     sessionStorage.setItem(TrikeMapKey, JSON.stringify(data));
     setStateLocationHistory(data);
@@ -74,6 +74,19 @@ export default function TrikeLocationMap(): JSX.Element {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [GPS]);
 
-  console.log('locationHistory', locationHistory);
-  return <LocationMap series={locationHistory} />;
+  // Converts a LatLngTuple -> LocationTimeSeriesPoint
+  const convertToLTSP = ([
+    lat,
+    long,
+  ]: LatLngTuple): LocationTimeSeriesPoint => ({ lat, long });
+
+  const testLocationHistory: LocationTimeSeriesPoint[] = caseyData.map(
+    convertToLTSP,
+  );
+
+  console.log('testlh', testLocationHistory);
+
+  // locationHistory type is <LocationTimeSeriesPoint[]>, NOT <LocationMapProps>
+  return <LocationMap series={testLocationHistory} />;
+  // return <LocationMap series={locationHistory} />;
 }
