@@ -4,6 +4,7 @@ import TrikeLocationMap from 'components/trike/dashboard/TrikeLocationMap';
 
 import { Container, Col, Row } from 'react-bootstrap';
 import LiveDataRow from 'components/trike/dashboard/LiveDataRow';
+import TrikeStatsRow from 'components/trike/dashboard/TrikeStats';
 
 import styles from './DashboardView.module.css';
 import { TrikeSpeedDistanceChart } from '../../components/trike/charts/TrikeSpeedDistanceChart';
@@ -34,7 +35,7 @@ export default function DashboardView(): JSX.Element {
           lg={{ span: 6, order: 3 }}
           className={styles.statContainer}
         >
-          Statistics Here
+          <TrikeStatsRow />
         </Col>
         <Col xs={{ span: 12, order: 4 }} lg={{ span: 6, order: 4 }}>
           <div className={styles.bigGraph}>
