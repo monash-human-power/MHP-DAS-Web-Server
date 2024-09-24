@@ -48,7 +48,7 @@ export default function LocationMap({ series }: LocationMapProps): JSX.Element {
   return (
     <Map
       center={center}
-      zoom={17}
+      zoom={16}
       attributionControl={false}
       className={styles.map}
     >
@@ -68,7 +68,8 @@ export default function LocationMap({ series }: LocationMapProps): JSX.Element {
           fillOpacity={1}
         />
       ) : null}
-      <Polyline positions={bikeHistory} color="#007bff" weight={4} />
+      <Polyline positions={bikeHistory} color="red" weight={1} />{' '}
+      {/* all locations of the trike */}
       <ScaleControl imperial={false} />
       <AttributionControl prefix={false} />
       <LeafletCenterControl center={center} />
