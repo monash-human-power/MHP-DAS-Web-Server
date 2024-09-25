@@ -11,7 +11,7 @@ import {
 
 import styles from 'components/common/charts/LocationMap.module.css';
 import LeafletCenterControl from 'components/v2/LeafletCenterControl';
-// import LTSPToTuple from 'components/trike/dashboard/Anim'
+import { LTSPToTuple } from 'components/trike/dashboard/AnimatedLocationMap';
 
 import 'leaflet/dist/leaflet.css';
 
@@ -37,9 +37,7 @@ export interface LocationMapProps {
  * @returns Component
  */
 export default function LocationMap({ series }: LocationMapProps): JSX.Element {
-  const bikeHistory: LatLngTuple[] = series.map(
-    ({ lat, long }) => [lat, long] as LatLngTuple,
-  );
+  const bikeHistory: LatLngTuple[] = series.map(LTSPToTuple);
 
   const initialLocation = bikeHistory[0];
   const currentLocation = bikeHistory[bikeHistory.length - 1];
