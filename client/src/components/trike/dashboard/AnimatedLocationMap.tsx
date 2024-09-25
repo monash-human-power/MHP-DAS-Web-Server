@@ -32,9 +32,9 @@ export const LTSPToTuple = ({
  * @returns Component
  */
 export default function AnimatedLocationMap(): JSX.Element {
-  // Retrieves a JSON (formatted as a string) in sessionStorage (stored by MQTT I assume)
+  // Retrieves a JSON (as a string) in sessionStorage (stored by MQTT I assume)
   // const storedData: string | null = sessionStorage.getItem(TrikeMapKey);  // <-- from MQTT
-  const storedData: LocationTimeSeriesPoint[] = caseyData.map(tupleToLTSP); // <-- from JSON
+  const storedData: LocationTimeSeriesPoint[] = caseyData.map(tupleToLTSP); // <-- from JSON array
 
   const [currIndex, setCurrIndex] = useState(0);
   const [locationHistory, setStateLocationHistory] = useState<
@@ -62,7 +62,7 @@ export default function AnimatedLocationMap(): JSX.Element {
         // if (isValidLocation(location)) {
         // }
 
-        // The following should be checked for valid location before
+        // The following should be checked for valid location before...
         setStateLocationHistory([...locationHistory, location]);
         setCurrIndex(currIndex + 1);
       } else {
