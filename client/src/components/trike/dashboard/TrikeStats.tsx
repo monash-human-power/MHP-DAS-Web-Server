@@ -1,5 +1,4 @@
 import React from 'react';
-
 import styles from './LiveDataRow.module.css';
 import LiveData from './LiveData';
 
@@ -32,7 +31,7 @@ export default function TrikeStatsRow(): JSX.Element {
 
       <div className={styles.currentStintContainer}>
         <div className={styles.liveDataItem}>
-          <LiveData value="300" unit="km/h" desc="Elapsed Time:" />
+          <LiveData value="to be finished" unit="km/h" desc="Elapsed Time:" />
         </div>
 
         <div className={styles.liveDataItem}>

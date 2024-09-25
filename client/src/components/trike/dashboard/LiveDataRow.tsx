@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { LatLngTuple } from 'leaflet';
+import { roundNum } from 'utils/data';
 import styles from './LiveDataRow.module.css';
 import LiveData from './LiveData';
 
@@ -23,23 +23,30 @@ export default function LiveDataRow({ data }: LiveDataProps) {
 
 // getting power data from json file TESTING PURPOSES
 
-const powerData: LatLngTuple[] = require('../CaseyPowerData.json');
+const currLap = 0;
+
+const powerData: number[] = require('../CaseyPowerData.json');
+const speedData: number[] = require('../CaseySpeeds.json');
 
 export default function LiveDataRow(): JSX.Element {
   /* Testing LIVE display using JSON data */
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentPower, setCurrentPower] = useState<number | null>(null);
+  const [currentSpeed, setCurrentSpeed] = useState<number | null>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
       if (currentIndex < powerData.length) {
-        const [, power] = powerData[currentIndex]; // Get ONLY power from parsed data
+        const power = powerData[currentIndex]; // Get ONLY power from parsed data
+        const speed = speedData[currentIndex];
+
         setCurrentPower(power); // set current 'live' value
+        setCurrentSpeed(speed);
         setCurrentIndex((prevIndex) => prevIndex + 1); // next value
       } else {
         clearInterval(interval); // functional reset
       }
-    }, 200); // update value (can modify timing)
+    }, 100); // update value (can modify timing)
 
     return () => clearInterval(interval); // clear
   }, [currentIndex]);
@@ -64,7 +71,7 @@ export default function LiveDataRow(): JSX.Element {
   /* Local Time / Date Testing */
   const date = new Date();
   const showTime = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
-
+  const lapval = `${currLap}/${LapNum}`;
   /* End time testing */
 
   return (
@@ -82,20 +89,20 @@ export default function LiveDataRow(): JSX.Element {
       <div className={styles.currentStintContainer}>
         {currentPower !== null && (
           <div className={styles.liveDataItem}>
-            <LiveData
-              value={currentPower} // Show power value or "No data"
-              unit="W"
-              desc="Live Watts:"
-            />
+            <LiveData value={currentPower} unit="W" desc="Live Watts:" />
           </div>
         )}
 
         <div className={styles.liveDataItem}>
-          <LiveData value={currentPower} unit="km/h" desc="Live Speed:" />
+          <LiveData
+            value={currentSpeed ? roundNum(currentSpeed * 3.6, 2) : '-'}
+            unit="km/h"
+            desc="Live Speed:"
+          />
         </div>
 
         <div className={styles.liveDataItem}>
-          <LiveData value={LapNum} unit="" desc="Stint Laps:" />
+          <LiveData value={lapval} unit="" desc="Stint Laps:" />
         </div>
 
         <div className={styles.liveDataItem}>
@@ -112,7 +119,7 @@ export default function LiveDataRow(): JSX.Element {
         </div>
 
         <div className={styles.liveDataItem}>
-          <LiveData value="30" unit="m" desc="Est. Pit Time" />
+          <LiveData value="50" unit="m" desc="Est. Pit Time" />
           <div className={styles.buttonContainer}>
             <button
               style={{ color: '#73c977' }}
