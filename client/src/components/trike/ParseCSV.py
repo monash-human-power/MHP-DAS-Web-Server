@@ -1,15 +1,13 @@
 from csv import DictReader
 from json import dump
 
-def parseCSV(filePath: str, *fields: str) -> list[tuple[float, float]]:
+def parseCSV(filePath: str, *fields: str) -> list[tuple]:
     """
     :filePath: location of the .csv file
     :*fields: allows only certain fields to be included 
     """
     with open(filePath, 'r') as csvFile:
         dictData = DictReader(csvFile)
-
-        # [print(f) for f in dictData.fieldnames]
 
         # Default behaviour if invalid or no fields are provided
         if not fields:
@@ -53,10 +51,6 @@ writeTuplesToJson("CaseyLatLngTuple.json", caseyTuples)
 writeTuplesToJson("CaseySpeeds.json", speeds)
 
 power3 = [p[0] for p in parseCSV("CaseyGPSData.csv", "POWER")]
-print(power3)
 
 # [print(type(p)) for p in power3[:5]]
 # print(all(p[1] == ',' for p in power3))
-print(power3.count('0.0'))
-print(power3.count(''))
-print(len(power3))
