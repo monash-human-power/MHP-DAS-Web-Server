@@ -51,9 +51,10 @@ export default function DualAxisScatterChart({
       fontSize: 14,
     },
     maintainAspectRatio,
-    animation: {
-      duration: 0,
-    },
+    // animation: {
+    //   duration: 0,
+    //   easing: 'easeInQuad'
+    // },
     legend: {
       display: false,
     },
@@ -66,7 +67,13 @@ export default function DualAxisScatterChart({
             labelString: `${xAxis.label} (${xAxis.unit})`,
           },
           ticks: {
-            min: 0,
+            stepSize: 1,
+            minRotation: 0,
+            maxRotation: 0,
+            min: data[0] && Number(data[0].x) > 5 ? Number(data[0].x) : 0,
+            callback: (val, index) => {
+              return index % 20 !== 0 ? undefined : val;
+            },
           },
         },
       ],
@@ -120,6 +127,7 @@ export default function DualAxisScatterChart({
             enabled: true,
             content: `${Math.round(max * 100) / 100} ${yAxis.unit}`,
             yAdjust: 15,
+            xAdjust: -100,
           },
         },
         {
@@ -133,6 +141,7 @@ export default function DualAxisScatterChart({
             enabled: true,
             content: `${Math.round(max2 * 100) / 100} ${yAxis2.unit}`,
             yAdjust: 15,
+            xAdjust: 100,
           },
         },
       ],
@@ -149,7 +158,7 @@ export default function DualAxisScatterChart({
         pointRadius: 0,
         showLine: true,
         yAxisID: 'y-axis-1',
-        lineTension: 0,
+        // tension: 0
       },
       {
         label: 'Speed data',
@@ -158,10 +167,12 @@ export default function DualAxisScatterChart({
         pointRadius: 0,
         showLine: true,
         yAxisID: 'y-axis-2',
-        lineTension: 0,
+        // tension: 0
       },
     ],
   };
+  // Redraws graph after large sequence has been drawn
+  const doRedraw = data[0] ? Number(data[0].x) % 500 === 0 : false;
 
-  return <Scatter options={options} data={formattedData} />;
+  return <Scatter options={options} data={formattedData} redraw={doRedraw} />;
 }

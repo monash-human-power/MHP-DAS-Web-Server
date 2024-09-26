@@ -67,7 +67,6 @@ export function TrikePowerSpeedTimeChart() {
 
   // Stateful currentIndex
   const [currentIndex, setCurrentIndex] = useState(0);
-
   useEffect(() => {
     const interval = setInterval(() => {
       if (currentIndex < powerData.length) {
@@ -80,12 +79,17 @@ export function TrikePowerSpeedTimeChart() {
           maxSpeed.current = Math.max(maxSpeed.current, speedKmh);
           maxPower.current = Math.max(maxPower.current, power);
 
+          if (time > 120) {
+            STdata.shift();
+            PTdata.shift();
+          }
+
           setSTData([...STdata, { x: time, y: speedKmh }]);
           setPTData([...PTdata, { x: time, y: power }]);
-        } else {
-          setSTData([]);
-          setPTData([]);
         }
+      } else {
+        setSTData([]);
+        setPTData([]);
       }
     }, 50);
 
@@ -95,8 +99,14 @@ export function TrikePowerSpeedTimeChart() {
   return (
     <PowerSpeedTimeChart
       // Datasets
-      data={PTdata}
-      data2={STdata}
+      data={PTdata.slice(
+        Math.max(0, Math.ceil((PTdata.length - 100) / 10) * 10),
+        -1,
+      )}
+      data2={STdata.slice(
+        Math.max(0, Math.ceil((STdata.length - 100) / 10) * 10),
+        -1,
+      )}
       // Maximums of datasets
       max={maxPower.current}
       max2={maxSpeed.current}
