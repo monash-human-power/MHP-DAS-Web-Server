@@ -15,8 +15,11 @@ import { LTSPToTuple } from 'components/trike/dashboard/AnimatedLocationMap';
 
 import 'leaflet/dist/leaflet.css';
 
-// const MHP_WORKSHOP_LOCATION = [-37.908756, 145.13404];
-const CASEY_FIELDS_LOCATION: LatLngTuple = [-38.126945, 145.314126];
+// Contains some common locations
+export const LOCATIONS: { [key: string]: LatLngTuple } = {
+  MHP_WORKSHOP: [-37.908756, 145.13404],
+  CASEY_FIELDS: [-38.126945, 145.314126],
+};
 
 export interface LocationTimeSeriesPoint {
   /** GPS latitude */
@@ -43,7 +46,7 @@ export default function LocationMap({ series }: LocationMapProps): JSX.Element {
   const currentLocation = bikeHistory[bikeHistory.length - 1];
 
   // Keeps centre constant
-  const center = CASEY_FIELDS_LOCATION;
+  const center = LOCATIONS.CASEY_FIELDS;
 
   return (
     <Map
@@ -53,10 +56,13 @@ export default function LocationMap({ series }: LocationMapProps): JSX.Element {
       className={styles.map}
     >
       <TileLayer
-        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        // Alternate tile layer
-        url="http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}&s=Ga"
+        // attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        // // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        // // Alternate tile layer
+        // url="http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}&s=Ga"
+
+        attribution='&copy; <a href="http://stamen.com/copyright">Stamen Design</a>'
+        url="https://stamen-tiles.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png"
       />
 
       {currentLocation ? (
