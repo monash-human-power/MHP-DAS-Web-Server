@@ -56,13 +56,10 @@ export default function LocationMap({ series }: LocationMapProps): JSX.Element {
       className={styles.map}
     >
       <TileLayer
-        // attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        // // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        // // Alternate tile layer
-        // url="http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}&s=Ga"
-
-        attribution='&copy; <a href="http://stamen.com/copyright">Stamen Design</a>'
-        url="https://stamen-tiles.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png"
+        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        // Alternate tile layer
+        url="http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}&s=Ga"
       />
 
       {currentLocation ? (
@@ -88,7 +85,12 @@ export default function LocationMap({ series }: LocationMapProps): JSX.Element {
       ) : null}
 
       {/* Polyline draws all previous locations of the bike */}
-      <Polyline positions={bikeHistory} color="DodgerBlue" weight={1} />
+      <Polyline
+        positions={bikeHistory}
+        color="DodgerBlue"
+        weight={1}
+        opacity={0.8}
+      />
       <ScaleControl imperial={false} />
       <AttributionControl prefix={false} />
       <LeafletCenterControl center={center} />
