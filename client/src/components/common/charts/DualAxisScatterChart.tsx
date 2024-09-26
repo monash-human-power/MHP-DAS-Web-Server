@@ -130,17 +130,18 @@ export default function DualAxisScatterChart({
   };
 
   const formattedData = {
-    label: 'Scatter Dataset',
     datasets: [
       {
+        label: 'Power data',
         data,
-        backgroundColor: [dataColour],
+        borderColor: [dataColour],
         showLine: true,
         yAxisID: 'A',
       },
       {
+        label: 'Speed data',
         data2,
-        backgroundColor: [data2Colour],
+        borderColor: [data2Colour],
         showLine: true,
         yAxisID: 'B',
       },
