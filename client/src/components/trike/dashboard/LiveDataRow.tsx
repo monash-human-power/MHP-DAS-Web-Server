@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { roundNum } from 'utils/data';
 import styles from './LiveDataRow.module.css';
 import LiveData from './LiveData';
+import { INTERVAL_MS } from './AnimatedLocationMap';
 
 /*
 // For testing display
@@ -46,7 +47,7 @@ export default function LiveDataRow(): JSX.Element {
       } else {
         clearInterval(interval); // functional reset
       }
-    }, 100); // update value (can modify timing)
+    }, INTERVAL_MS); // update value (can modify timing)
 
     return () => clearInterval(interval); // clear
   }, [currentIndex]);
