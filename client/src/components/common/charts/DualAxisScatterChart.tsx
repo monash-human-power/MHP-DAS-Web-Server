@@ -51,7 +51,9 @@ export default function DualAxisScatterChart({
       fontSize: 14,
     },
     maintainAspectRatio,
-
+    animation: {
+      duration: 0,
+    },
     legend: {
       display: false,
     },
@@ -80,7 +82,7 @@ export default function DualAxisScatterChart({
           stacked: false,
           ticks: {
             min: 0,
-            max: (max + 1) * 1.1,
+            max: Math.ceil((max + 1) / 100) * 100,
             fontColor: dataColour,
           },
           position: 'left',
@@ -96,7 +98,7 @@ export default function DualAxisScatterChart({
           stacked: false,
           ticks: {
             min: 0,
-            max: (max2 + 1) * 1.1,
+            max: Math.ceil((max2 + 1) / 100) * 100,
             beginAtZero: true,
             fontColor: data2Colour,
           },
