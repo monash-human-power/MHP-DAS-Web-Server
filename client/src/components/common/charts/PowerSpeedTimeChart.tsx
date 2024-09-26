@@ -28,9 +28,9 @@ export default function PowerSpeedTimeChart({
       data2={data2}
       data2Colour={DARKBLUE}
       max={max}
-      maxColour={DARKBLUE}
+      maxColour={DARKGREEN}
       max2={max2}
-      max2Colour={DARKGREEN}
+      max2Colour={DARKBLUE}
       maintainAspectRatio={false}
     />
   );
