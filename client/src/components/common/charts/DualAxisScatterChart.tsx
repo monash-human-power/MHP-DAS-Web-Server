@@ -50,7 +50,6 @@ export default function DualAxisScatterChart({
       text: title,
       fontSize: 14,
     },
-
     maintainAspectRatio,
 
     legend: {
@@ -64,30 +63,40 @@ export default function DualAxisScatterChart({
             display: true,
             labelString: `${xAxis.label} (${xAxis.unit})`,
           },
+          ticks: {
+            min: 0,
+          },
         },
       ],
       yAxes: [
         {
-          id: 'A',
+          id: 'y-axis-1',
           display: true,
           scaleLabel: {
             display: true,
             labelString: `${yAxis.label} (${yAxis.unit})`,
+            fontColor: dataColour,
           },
+          stacked: false,
           ticks: {
-            beginAtZero: true,
+            min: 0,
+            max: (max + 1) * 1.1,
             fontColor: dataColour,
           },
           position: 'left',
         },
         {
-          id: 'B',
+          id: 'y-axis-2',
           display: true,
           scaleLabel: {
             display: true,
             labelString: `${yAxis2.label} (${yAxis2.unit})`,
+            fontColor: data2Colour,
           },
+          stacked: false,
           ticks: {
+            min: 0,
+            max: (max2 + 1) * 1.1,
             beginAtZero: true,
             fontColor: data2Colour,
           },
@@ -101,7 +110,7 @@ export default function DualAxisScatterChart({
         {
           type: 'line',
           mode: 'horizontal',
-          scaleID: 'A',
+          scaleID: 'y-axis-1',
           value: max,
           borderColor: maxColour,
           borderDash: [10, 10],
@@ -114,7 +123,7 @@ export default function DualAxisScatterChart({
         {
           type: 'line',
           mode: 'horizontal',
-          scaleID: 'B',
+          scaleID: 'y-axis-2',
           value: max2,
           borderColor: max2Colour,
           borderDash: [10, 10],
@@ -134,16 +143,20 @@ export default function DualAxisScatterChart({
       {
         label: 'Power data',
         data,
-        borderColor: [dataColour],
+        borderColor: dataColour,
+        pointRadius: 0,
         showLine: true,
-        yAxisID: 'A',
+        yAxisID: 'y-axis-1',
+        lineTension: 0,
       },
       {
         label: 'Speed data',
-        data2,
-        borderColor: [data2Colour],
+        data: data2,
+        borderColor: data2Colour,
+        pointRadius: 0,
         showLine: true,
-        yAxisID: 'B',
+        yAxisID: 'y-axis-2',
+        lineTension: 0,
       },
     ],
   };

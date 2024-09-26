@@ -15,8 +15,10 @@ export const TrikeSTChartKey = 'trike-dashboard-speed-time-chart-data';
  * @returns Component
  */
 export function TrikePowerSpeedTimeChart() {
-  const storedPTData = sessionStorage.getItem(TrikePTChartKey);
-  const storedSTData = sessionStorage.getItem(TrikeSTChartKey);
+  // const storedPTData = sessionStorage.getItem(TrikePTChartKey);
+  // const storedSTData = sessionStorage.getItem(TrikeSTChartKey);
+  const storedPTData = null;
+  const storedSTData = null;
 
   // Used to store the data points
   const [PTdata, setStatePTData] = useState<ChartPoint[]>(
@@ -72,49 +74,30 @@ export function TrikePowerSpeedTimeChart() {
         const power = powerData[currentIndex]; // Get ONLY power from parsed data
         const speed = speedData[currentIndex];
         const time = timeData[currentIndex];
+        const speedKmh = speed * 3.6;
         setCurrentIndex(currentIndex + 1); // next value
         if (time !== STdata[STdata.length - 1]?.x) {
-          const speedKmh = speed * 3.6;
           maxSpeed.current = Math.max(maxSpeed.current, speedKmh);
           maxPower.current = Math.max(maxPower.current, power);
+
           setSTData([...STdata, { x: time, y: speedKmh }]);
           setPTData([...PTdata, { x: time, y: power }]);
+        } else {
+          setSTData([]);
+          setPTData([]);
         }
-      } else {
-        setSTData([]);
-        setPTData([]);
       }
     }, 50);
 
     return () => clearInterval(interval);
   }, [currentIndex]);
-  // END TESTING
-
-  // // Update data whenever the point is updated
-  // useEffect(() => {
-  //   // Add new data point
-  //   if (
-  //     // speed &&
-  //     // time && // Non null
-  //     // power &&
-  //     // New distance measurement
-  //     time !== STdata[STdata.length - 1]?.x
-  //   ) {
-  //     const speedKmh = speed * 3.6;
-  //     maxSpeed.current = Math.max(maxSpeed.current, speedKmh);
-  //     maxPower.current = Math.max(maxPower.current, power);
-  //     setSTData([...STdata, { x: time, y: speedKmh }]);
-  //     setPTData([...PTdata, { x: time, y: power }]);
-  //   }
-  //   // Omit data in deps as otherwise there would be an infinite render loop
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [speed, power, time, currentIndex]);
 
   return (
     <PowerSpeedTimeChart
-      // Maximum of data set
+      // Datasets
       data={PTdata}
       data2={STdata}
+      // Maximums of datasets
       max={maxPower.current}
       max2={maxSpeed.current}
     />

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BLUE, DARKGREEN } from 'components/common/charts/colours';
+import { DARKBLUE, DARKGREEN } from 'components/common/charts/colours';
 import DualAxisScatterChart from 'components/common/charts/DualAxisScatterChart';
 import { DualChartProps } from 'types/chart';
 
@@ -26,9 +26,9 @@ export default function PowerSpeedTimeChart({
       data={data}
       dataColour={DARKGREEN}
       data2={data2}
-      data2Colour={BLUE}
+      data2Colour={DARKBLUE}
       max={max}
-      maxColour={BLUE}
+      maxColour={DARKBLUE}
       max2={max2}
       max2Colour={DARKGREEN}
       maintainAspectRatio={false}
