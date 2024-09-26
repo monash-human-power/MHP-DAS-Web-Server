@@ -28,7 +28,7 @@ def isIncreasing(numbers: list[int]) -> bool:
 # power2 = parseCSV("CaseyGPSData.csv", "TIME_TOTAL")
 
 # distAndTime = parseCSV("CaseyGPSData.csv", "DISTANCE_m", "TIME_TOTAL")
-times = map(lambda x: x[0], parseCSV("CaseyGPSData.csv", "TIME_TOTAL"))
+times = parseCSV("CaseyGPSData.csv", "_id")
 
 
 def calculateSpeed(distAndTime: list[tuple]) -> list[float]:
@@ -53,7 +53,7 @@ def calculateSpeed(distAndTime: list[tuple]) -> list[float]:
 
 # writeTuplesToJson("CaseyLatLngTuple.json", caseyTuples)
 # writeTuplesToJson("CaseySpeeds.json", speeds)
-writeTuplesToJson("CaseyTimes", times)
+writeTuplesToJson("CaseyTimes.json", times)
 # power3 = [p[0] for p in parseCSV("CaseyGPSData.csv", "POWER")]
 
 # [print(type(p)) for p in power3[:5]]
