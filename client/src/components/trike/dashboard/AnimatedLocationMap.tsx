@@ -10,7 +10,7 @@ export const TrikeMapKey = 'trike-dashboard-location-map-chart-data';
 export const TrikeZoomKey = 'trike-dashboard-location-map-zoom';
 
 // How frequently locationHistory updates
-const INTERVAL_MS: number = 50;
+export const INTERVAL_MS: number = 50;
 
 const caseyData: LatLngTuple[] = require('../CaseyLatLngTuple.json');
 
