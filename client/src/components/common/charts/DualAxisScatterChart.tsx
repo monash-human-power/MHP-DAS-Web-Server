@@ -44,6 +44,9 @@ export default function DualAxisScatterChart({
   max2Colour,
   maintainAspectRatio = true,
 }: DualAxisScatterChartProps): JSX.Element {
+  const xmin = data[0] && Number(data[0].x) > 5 ? Number(data[0].x) : 0;
+  const doRedraw = data[0] ? Number(data[0].x) % 50 === 0 : false;
+
   const options: ChartOptions = {
     title: {
       display: true,
@@ -51,10 +54,9 @@ export default function DualAxisScatterChart({
       fontSize: 14,
     },
     maintainAspectRatio,
-    // animation: {
-    //   duration: 0,
-    //   easing: 'easeInQuad'
-    // },
+    animation: {
+      duration: 0,
+    },
     legend: {
       display: false,
     },
@@ -70,9 +72,12 @@ export default function DualAxisScatterChart({
             stepSize: 1,
             minRotation: 0,
             maxRotation: 0,
-            min: data[0] && Number(data[0].x) > 5 ? Number(data[0].x) : 0,
+            min: xmin,
+            autoSkip: false,
             callback: (val, index) => {
-              return index % 20 !== 0 ? undefined : val;
+              return index % 20 === 0 || index % (2 * data.length - 1) === 0
+                ? val
+                : undefined;
             },
           },
         },
@@ -158,7 +163,7 @@ export default function DualAxisScatterChart({
         pointRadius: 0,
         showLine: true,
         yAxisID: 'y-axis-1',
-        // tension: 0
+        tension: 0,
       },
       {
         label: 'Speed data',
@@ -167,12 +172,11 @@ export default function DualAxisScatterChart({
         pointRadius: 0,
         showLine: true,
         yAxisID: 'y-axis-2',
-        // tension: 0
+        tension: 0,
       },
     ],
   };
   // Redraws graph after large sequence has been drawn
-  const doRedraw = data[0] ? Number(data[0].x) % 500 === 0 : false;
 
   return <Scatter options={options} data={formattedData} redraw={doRedraw} />;
 }

@@ -70,43 +70,36 @@ export function TrikePowerSpeedTimeChart() {
   useEffect(() => {
     const interval = setInterval(() => {
       if (currentIndex < powerData.length) {
-        const power = powerData[currentIndex]; // Get ONLY power from parsed data
-        const speed = speedData[currentIndex];
-        const time = timeData[currentIndex];
-        const speedKmh = speed * 3.6;
         setCurrentIndex(currentIndex + 1); // next value
-        if (time !== STdata[STdata.length - 1]?.x) {
-          maxSpeed.current = Math.max(maxSpeed.current, speedKmh);
-          maxPower.current = Math.max(maxPower.current, power);
-
-          if (time > 120) {
-            STdata.shift();
-            PTdata.shift();
-          }
-
-          setSTData([...STdata, { x: time, y: speedKmh }]);
-          setPTData([...PTdata, { x: time, y: power }]);
-        }
-      } else {
-        setSTData([]);
-        setPTData([]);
       }
     }, 50);
+
+    // Get latest power, speed and time value from test data
+    const power = powerData[currentIndex];
+    const speed = speedData[currentIndex];
+    const time = timeData[currentIndex];
+    // Convert speed units
+    const speedKmh = speed * 3.6;
+    // Check if there is a new max speed/power
+    maxSpeed.current = Math.max(maxSpeed.current, speedKmh);
+    maxPower.current = Math.max(maxPower.current, power);
+
+    // Only want to keep 1 minute's worth of data for performance
+    if (PTdata.length > 60) {
+      STdata.shift();
+      PTdata.shift();
+    }
+    // Append latest power and speed values
+    setSTData([...STdata, { x: time, y: speedKmh }]);
+    setPTData([...PTdata, { x: time, y: power }]);
 
     return () => clearInterval(interval);
   }, [currentIndex]);
 
   return (
     <PowerSpeedTimeChart
-      // Datasets
-      data={PTdata.slice(
-        Math.max(0, Math.ceil((PTdata.length - 100) / 10) * 10),
-        -1,
-      )}
-      data2={STdata.slice(
-        Math.max(0, Math.ceil((STdata.length - 100) / 10) * 10),
-        -1,
-      )}
+      data={PTdata}
+      data2={STdata}
       // Maximums of datasets
       max={maxPower.current}
       max2={maxSpeed.current}
