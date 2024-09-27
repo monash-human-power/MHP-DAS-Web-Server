@@ -15,10 +15,12 @@ import { LTSPToTuple } from 'components/trike/dashboard/AnimatedLocationMap';
 
 import 'leaflet/dist/leaflet.css';
 
-// Contains some common locations
+// Contains some common (LatLngTuple) locations
 export const LOCATIONS: { [key: string]: LatLngTuple } = {
   MHP_WORKSHOP: [-37.908756, 145.13404],
   CASEY_FIELDS: [-38.126945, 145.314126],
+  CALDER_PARK: [-37.671667, 144.755833], // Unfortunately doesn't have much detail
+  PACKER_PARK: [-37.901526, 145.058029],
 };
 
 export interface LocationTimeSeriesPoint {
@@ -42,11 +44,11 @@ export interface LocationMapProps {
 export default function LocationMap({ series }: LocationMapProps): JSX.Element {
   const bikeHistory: LatLngTuple[] = series.map(LTSPToTuple);
 
-  const initialLocation = bikeHistory[0];
-  const currentLocation = bikeHistory[bikeHistory.length - 1];
+  const initialLocation: LatLngTuple = bikeHistory[0];
+  const currentLocation: LatLngTuple = bikeHistory[bikeHistory.length - 1];
 
   // Keeps centre constant
-  const center = LOCATIONS.CASEY_FIELDS;
+  const center: LatLngTuple = LOCATIONS.CASEY_FIELDS;
 
   return (
     <Map
