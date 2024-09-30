@@ -54,7 +54,7 @@ export default function AnimatedLocationMap(): JSX.Element {
   useChannel('wireless_module-3-start', reset);
 
   // Updates locations at a certain interval
-  const updateLocation = () => {
+  const updateLocationEffect = () => {
     const interval = setInterval(() => {
       if (storedData[currIndex] && currIndex < storedData.length) {
         const location = storedData[currIndex];
@@ -74,7 +74,7 @@ export default function AnimatedLocationMap(): JSX.Element {
   };
 
   // Call updateLocation when currIndex or storedData updates
-  useEffect(updateLocation, [currIndex, storedData]);
+  useEffect(updateLocationEffect, [currIndex, storedData]);
 
   // locationHistory type is <LocationTimeSeriesPoint[]>, NOT <LocationMapProps>
   return <LocationMap series={locationHistory} />;
