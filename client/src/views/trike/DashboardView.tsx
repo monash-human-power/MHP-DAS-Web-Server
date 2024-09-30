@@ -1,6 +1,5 @@
 import React from 'react';
 
-// import TrikeLocationMap from 'components/trike/dashboard/TrikeLocationMap';
 import AnimatedLocationMap from 'components/trike/dashboard/AnimatedLocationMap';
 
 import { Container, Col, Row } from 'react-bootstrap';
